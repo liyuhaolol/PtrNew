@@ -161,9 +161,7 @@ public abstract class BaseQuickAdapter<T, K extends BaseViewHolder> extends Recy
     }
 
     /**
-     * @see #setOnLoadMoreListener(RequestLoadMoreListener, RecyclerView)
      * @deprecated This method is because it can lead to crash: always call this method while RecyclerView is computing a layout or scrolling.
-     * Please use {@link #setOnLoadMoreListener(RequestLoadMoreListener, RecyclerView)}
      */
     @Deprecated
     public void setOnLoadMoreListener(RequestLoadMoreListener requestLoadMoreListener) {
@@ -184,11 +182,6 @@ public abstract class BaseQuickAdapter<T, K extends BaseViewHolder> extends Recy
         }
     }
 
-    /**
-     * bind recyclerView {@link #bindToRecyclerView(RecyclerView)} before use!
-     *
-     * @see #disableLoadMoreIfNotFullPage(RecyclerView)
-     */
     public void disableLoadMoreIfNotFullPage() {
         checkNotNull();
         disableLoadMoreIfNotFullPage(getRecyclerView());
@@ -807,7 +800,6 @@ public abstract class BaseQuickAdapter<T, K extends BaseViewHolder> extends Recy
     /**
      * Called when a view created by this adapter has been attached to a window.
      * simple to solve item will layout using all
-     * {@link #setFullSpan(RecyclerView.ViewHolder)}
      *
      * @param holder
      */
@@ -1119,12 +1111,12 @@ public abstract class BaseQuickAdapter<T, K extends BaseViewHolder> extends Recy
 
     /**
      * Add header view to mHeaderLayout and set header view position in mHeaderLayout.
-     * When index = -1 or index >= child count in mHeaderLayout,
+     * When index = -1 or index big= child count in mHeaderLayout,
      * the effect of this method is the same as that of {@link #addHeaderView(View)}.
      *
      * @param header
      * @param index  the position in mHeaderLayout of this header.
-     *               When index = -1 or index >= child count in mHeaderLayout,
+     *               When index = -1 or index big= child count in mHeaderLayout,
      *               the effect of this method is the same as that of {@link #addHeaderView(View)}.
      */
     public int addHeaderView(View header, int index) {
@@ -1194,12 +1186,12 @@ public abstract class BaseQuickAdapter<T, K extends BaseViewHolder> extends Recy
 
     /**
      * Add footer view to mFooterLayout and set footer view position in mFooterLayout.
-     * When index = -1 or index >= child count in mFooterLayout,
+     * When index = -1 or index big= child count in mFooterLayout,
      * the effect of this method is the same as that of {@link #addFooterView(View)}.
      *
      * @param footer
      * @param index  the position in mFooterLayout of this footer.
-     *               When index = -1 or index >= child count in mFooterLayout,
+     *               When index = -1 or index big= child count in mFooterLayout,
      *               the effect of this method is the same as that of {@link #addFooterView(View)}.
      */
     public int addFooterView(View footer, int index, int orientation) {
@@ -1340,11 +1332,6 @@ public abstract class BaseQuickAdapter<T, K extends BaseViewHolder> extends Recy
         setEmptyView(view);
     }
 
-    /**
-     * bind recyclerView {@link #bindToRecyclerView(RecyclerView)} before use!
-     *
-     * @see #bindToRecyclerView(RecyclerView)
-     */
     public void setEmptyView(int layoutResId) {
         checkNotNull();
         setEmptyView(layoutResId, getRecyclerView());
@@ -1378,7 +1365,6 @@ public abstract class BaseQuickAdapter<T, K extends BaseViewHolder> extends Recy
     }
 
     /**
-     * Call before {@link RecyclerView#setAdapter(RecyclerView.Adapter)}
      *
      * @param isHeadAndEmpty false will not show headView if the data is empty true will show emptyView and headView
      */
@@ -1388,7 +1374,6 @@ public abstract class BaseQuickAdapter<T, K extends BaseViewHolder> extends Recy
 
     /**
      * set emptyView show if adapter is empty and want to show headview and footview
-     * Call before {@link RecyclerView#setAdapter(RecyclerView.Adapter)}
      *
      * @param isHeadAndEmpty
      * @param isFootAndEmpty
@@ -1558,7 +1543,6 @@ public abstract class BaseQuickAdapter<T, K extends BaseViewHolder> extends Recy
     }
 
     /**
-     * {@link #addAnimation(RecyclerView.ViewHolder)}
      *
      * @param firstOnly true just show anim when first loading false show anim when load the data every time
      */
@@ -1577,9 +1561,7 @@ public abstract class BaseQuickAdapter<T, K extends BaseViewHolder> extends Recy
     /**
      * get the specific view by position,e.g. getViewByPosition(2, R.id.textView)
      * <p>
-     * bind recyclerView {@link #bindToRecyclerView(RecyclerView)} before use!
      *
-     * @see #bindToRecyclerView(RecyclerView)
      */
     @Nullable
     public View getViewByPosition(int position, @IdRes int viewId) {

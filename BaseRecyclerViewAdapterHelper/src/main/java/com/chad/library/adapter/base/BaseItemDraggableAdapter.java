@@ -8,6 +8,7 @@ import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.MotionEvent;
 import android.view.View;
 
+
 import com.chad.library.R;
 import com.chad.library.adapter.base.callback.ItemDragAndSwipeCallback;
 import com.chad.library.adapter.base.listener.OnItemDragListener;
@@ -129,7 +130,7 @@ public abstract class BaseItemDraggableAdapter<T, K extends BaseViewHolder> exte
      * Enable drag items.
      * Use itemView as the toggleView when long pressed.
      *
-     * @param itemTouchHelper {@link ItemTouchHelper}
+     * @param itemTouchHelper ItemTouchHelper
      */
     public void enableDragItem(@NonNull ItemTouchHelper itemTouchHelper) {
         enableDragItem(itemTouchHelper, NO_TOGGLE_VIEW, true);
@@ -138,7 +139,7 @@ public abstract class BaseItemDraggableAdapter<T, K extends BaseViewHolder> exte
     /**
      * Enable drag items. Use the specified view as toggle.
      *
-     * @param itemTouchHelper {@link ItemTouchHelper}
+     * @param itemTouchHelper ItemTouchHelper
      * @param toggleViewId    The toggle view's id.
      * @param dragOnLongPress If true the drag event will be trigger on long press, otherwise on touch down.
      */
@@ -163,8 +164,7 @@ public abstract class BaseItemDraggableAdapter<T, K extends BaseViewHolder> exte
 
     /**
      * <p>Enable swipe items.</p>
-     * You should attach {@link ItemTouchHelper} which construct with {@link ItemDragAndSwipeCallback} to the Recycler when you enable this.
-     */
+      */
     public void enableSwipeItem() {
         itemSwipeEnabled = true;
     }

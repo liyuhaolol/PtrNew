@@ -26,7 +26,6 @@ import static com.chad.library.adapter.base.BaseQuickAdapter.LOADING_VIEW;
  * a touch interaction already in progress even if the SimpleClickListener is already handling that
  * gesture stream itself for the purposes of scrolling.
  *
- * @see RecyclerView.OnItemTouchListener
  */
 public abstract class SimpleClickListener implements RecyclerView.OnItemTouchListener {
     public static String TAG = "SimpleClickListener";
@@ -256,7 +255,6 @@ public abstract class SimpleClickListener implements RecyclerView.OnItemTouchLis
      *
      * @param view     The view whihin the AbsListView that was clicked
      * @param position The position of the view int the adapter
-     * @return true if the callback consumed the long click ,false otherwise
      */
     public abstract void onItemLongClick(BaseQuickAdapter adapter, View view, int position);
 

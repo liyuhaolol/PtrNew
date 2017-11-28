@@ -371,7 +371,6 @@ public class BaseViewHolder extends RecyclerView.ViewHolder {
      *
      * @param viewId add the child view id   can support childview click
      * @return if you use adapter bind listener
-     * @link {(adapter.setOnItemChildClickListener(listener))}
      * <p>
      * or if you can use  recyclerView.addOnItemTouch(listerer)  wo also support this menthod
      */
@@ -415,7 +414,6 @@ public class BaseViewHolder extends RecyclerView.ViewHolder {
      *
      * @param viewId
      * @return if you use adapter bind listener
-     * @link {(adapter.setOnItemChildLongClickListener(listener))}
      * <p>
      * or if you can use  recyclerView.addOnItemTouch(listerer)  wo also support this menthod
      */
