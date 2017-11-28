@@ -1,1 +1,1 @@
-include ':app', ':library', ':cns_android_sdk'
+include ':app', ':BaseRecyclerViewAdapterHelper', ':cns_android_sdk'
