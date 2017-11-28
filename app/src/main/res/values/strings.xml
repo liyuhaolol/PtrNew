@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">PtrNew</string>
+    <string name="clear">清空</string>
+    <string name="search">搜索</string>
+    <string name="search_result">搜索结果</string>
+    <string name="back">返回</string>
+    <string name="main_title">主题</string>
+    <string name="key_word">关键词</string>
+    <string name="writer">作者</string>
+    <string name="choose_plz">请选择</string>
+    <string name="paper_press_time">发稿时间</string>
+    <string name="tilde">~</string>
+    <string name="set">设置</string>
+    <string name="buxian_type">类型不限</string>
+    <string name="buxian_area">地域不限</string>
+    <string name="buxian_sign">不限</string>
+    <string name="type">类型</string>
+    <string name="rejection">退稿</string>
+    <string name="area">地域</string>
+    <string name="paper_time">发稿时间</string>
+    <string name="build_paper_time">建稿时间</string>
+    <string name="shifou_qianshou">是否签收</string>
+    <string name="chaxun">查询</string>
+    <string name="noresult_part1">很抱歉，没有找到匹配结果。</string>
+    <string name="noresult_part2">请更换检索条件再次尝试。</string>
+    <string name="yes">是</string>
+    <string name="no">否</string>
+    <string name="sign">签收</string>
+    <string name="edit">修改</string>
+    <string name="delete">删除</string>
+    <string name="no_data">暂时没有数据</string>
+    <string name="no_internet">暂时没有网络</string>
+    <string name="internet_error">网络服务器出错</string>
+    <string name="send_back">退稿原因（多选）</string>
+
+    <!-- 主题、引题、副题字数限制-->
+    <string name="title_text_max_size">31</string>
+</resources>

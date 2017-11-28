@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="ptr_view">#454545</color>
+    <color name="white">#ffffff</color>
+    <color name="maincolor">#E03C50</color>
+    <color name="black">#000000</color>
+    <color name="autologin">#4A4A4A</color>
+    <color name="leftbg">#F3F3F3</color>
+    <color name="hint_gray">#9B9B9B</color>
+    <color name="divider">#E8E8E8</color>
+    <color name="item__left_second_name">#6C6C6C</color>
+    <color name="left_divider">#F5F5F5</color>
+    <color name="item__left_name">#4A4A4A</color>
+    <color name="count">#EF4D57</color>
+    <color name="send_line">#CBCBCB</color>
+    <color name="text_theme">#848484</color>
+    <color name="send_bg">#F4F4F4</color>
+    <color name="send_count">#999999</color>
+    <color name="small_gray_text">#848484</color>
+    <color name="header_background">#EEEEEE</color>
+    <color name="add_video_bg">#F1F1F1</color>
+    <color name="urgent">#FF001F</color>
+    <color name="author">#686868</color>
+    <color name="score">#FF4D63</color>
+    <color name="dark_yellow">#F5A623</color>
+    <color name="senddraft_bg">#EDEBE9</color>
+    <color name="transparent">#00000000</color>
+</resources>
