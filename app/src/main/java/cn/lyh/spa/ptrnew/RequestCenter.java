@@ -5,106 +5,23 @@ import android.text.TextUtils;
 
 import com.alibaba.fastjson.TypeReference;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
-
-import cns.workspace.lib.androidsdk.httputils.CommonOkHttpClient;
-import cns.workspace.lib.androidsdk.httputils.listener.DisposeDataHandle;
-import cns.workspace.lib.androidsdk.httputils.listener.DisposeDataListener;
-import cns.workspace.lib.androidsdk.httputils.request.CommonRequest;
-import cns.workspace.lib.androidsdk.httputils.request.RequestParams;
-import okhttp3.Call;
 import okhttp3.MediaType;
-import okhttp3.MultipartBody;
-import okhttp3.Request;
-import okhttp3.RequestBody;
+import spa.lyh.cn.ft_httpcenter.httpbase.BaseRequestCenter;
+import spa.lyh.cn.lib_https.listener.DisposeDataListener;
+import spa.lyh.cn.lib_https.request.RequestParams;
+
 
 /**
  * Created by zhaolb on 2017/11/3.
  */
 
-public class RequestCenter {
+public class RequestCenter extends BaseRequestCenter {
     private static final MediaType MEDIA_TYPE_PNG = MediaType.parse("jpg");
-
-    //根据参数发送所有post请求
-    public static Call postRequest(final Activity activity, String url, RequestParams params, RequestParams headers, final DisposeDataListener listener, TypeReference<?> typeReference) {
-        return postRequest(activity,url,params,headers,listener,typeReference,true);
-    }
-
-    //可以控制是否显示loadingDialog
-    public static Call postRequest(final Activity activity, String url, RequestParams params, RequestParams headers, final DisposeDataListener listener, TypeReference<?> typeReference, boolean showDialog) {
-        //初始化等待loadDialog并显示
-        //创建网络请求
-        Call call = CommonOkHttpClient.sendResquest(CommonRequest.
-                createPostRequest(url, params,headers), new DisposeDataHandle(new DisposeDataListener() {
-            @Override
-            public void onSuccess(Object responseObj) {
-                listener.onSuccess(responseObj);
-            }
-
-            @Override
-            public void onFailure(Object reasonObj) {
-                listener.onFailure(reasonObj);
-
-            }
-        }, typeReference, true));
-
-        return call;
-    }
-
-    //可以控制是否显示loadingDialog
-    public static Call postFileRequest(final Activity activity, Request request, final DisposeDataListener listener, TypeReference<?> typeReference, boolean showDialog) {
-        //初始化等待loadDialog并显示
-        //创建网络请求
-        Call call = CommonOkHttpClient.sendResquest(request, new DisposeDataHandle(new DisposeDataListener() {
-            @Override
-            public void onSuccess(Object responseObj) {
-                listener.onSuccess(responseObj);
-            }
-
-            @Override
-            public void onFailure(Object reasonObj) {
-                listener.onFailure(reasonObj);
-
-            }
-        }, typeReference, true));
-
-        return call;
-    }
-
-
-    //根据参数发送所有get请求
-    public static void getRequest(Activity activity, String url, RequestParams params, RequestParams headers, DisposeDataListener listener, TypeReference<?> typeReference) {
-        getRequest(activity, url, params, headers, listener, typeReference, true);
-    }
-
-    //可以控制是否显示loadingDialog
-    public static Call getRequest(final Activity activity, String url, RequestParams params, RequestParams headers, final DisposeDataListener listener, TypeReference<?> typeReference, boolean showDialog) {
-        //初始化等待loadDialog并显示
-        //创建网络请求
-        Call call = CommonOkHttpClient.sendResquest(CommonRequest.
-                createGetRequest(url, params,headers,true), new DisposeDataHandle(new DisposeDataListener() {
-            @Override
-            public void onSuccess(Object responseObj) {
-                listener.onSuccess(responseObj);
-            }
-
-            @Override
-            public void onFailure(Object reasonObj) {
-                listener.onFailure(reasonObj);
-
-            }
-        }, typeReference, true));
-
-        return call;
-    }
-
 
     /**
      * 尝试得到所有的list数据
      */
-    public static void getCommonListNoLoading(Activity activity, ListParams params,DisposeDataListener listener){
+    public static void getCommonListNoLoading(Activity activity, ListParams params, DisposeDataListener listener){
         RequestParams bodyParams = new RequestParams();
         bodyParams.put("user_id",String.valueOf(params.user_id));
         bodyParams.put("pageNo",String.valueOf(params.pageNo));
@@ -135,6 +52,6 @@ public class RequestCenter {
         }
         //Log.e("CommonListUrl",HttpConstants.ROOT_URL +Global.MAIN_URL);
         TypeReference typeReference = new TypeReference<ListData>(){};
-        RequestCenter.getRequest(activity, HttpConstants.ROOT_URL +"/app/all_checked_list.jspx", bodyParams, null, listener, typeReference,false);
+        RequestCenter.getRequest(activity, HttpConstants.ROOT_URL +"/app/all_checked_list.jspx", bodyParams, null, typeReference,null, listener);
     }
 }

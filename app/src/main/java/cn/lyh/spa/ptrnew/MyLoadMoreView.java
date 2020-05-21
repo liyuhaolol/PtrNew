@@ -1,29 +1,47 @@
 package cn.lyh.spa.ptrnew;
 
-import com.chad.library.adapter.base.loadmore.LoadMoreView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+import com.chad.library.adapter.base.loadmore.BaseLoadMoreView;
+import com.chad.library.adapter.base.viewholder.BaseViewHolder;
+
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Created by liyuhao on 2017/11/27.
  */
 
-public class MyLoadMoreView extends LoadMoreView{
+public class MyLoadMoreView extends BaseLoadMoreView {
+
+    @NotNull
     @Override
-    public int getLayoutId() {
-        return R.layout.test_view_load_more;
+    public View getRootView(@NotNull ViewGroup viewGroup) {
+        return LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.test_view_load_more, viewGroup, false);
     }
 
+    @NotNull
     @Override
-    protected int getLoadingViewId() {
-        return R.id.load_more_loading_view;
+    public View getLoadComplete(@NotNull BaseViewHolder baseViewHolder) {
+        return baseViewHolder.findView(R.id.load_more_load_complete_view);
     }
 
+    @NotNull
     @Override
-    protected int getLoadFailViewId() {
-        return R.id.load_more_load_fail_view;
+    public View getLoadEndView(@NotNull BaseViewHolder baseViewHolder) {
+        return baseViewHolder.findView(R.id.load_more_load_end_view);
     }
 
+    @NotNull
     @Override
-    protected int getLoadEndViewId() {
-        return R.id.load_more_load_end_view;
+    public View getLoadFailView(@NotNull BaseViewHolder baseViewHolder) {
+        return baseViewHolder.findView(R.id.load_more_load_fail_view);
+    }
+
+    @NotNull
+    @Override
+    public View getLoadingView(@NotNull BaseViewHolder baseViewHolder) {
+        return baseViewHolder.findView(R.id.load_more_loading_view);
     }
 }

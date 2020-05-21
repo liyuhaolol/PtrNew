@@ -10,7 +10,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.chad.library.adapter.base.BaseViewHolder;
+import com.chad.library.adapter.base.module.LoadMoreModule;
+import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 
 import java.util.List;
 
@@ -19,7 +20,7 @@ import java.util.List;
  * Created by liyuhao on 2017/11/13.
  */
 
-public class ListItemAdapter extends BaseQuickAdapter<ItemData,ListItemAdapter.myViewHolder> {
+public class ListItemAdapter extends BaseQuickAdapter<ItemData,ListItemAdapter.myViewHolder> implements LoadMoreModule {
     private Context context;
 
     private List<ItemData> list;
@@ -39,41 +40,6 @@ public class ListItemAdapter extends BaseQuickAdapter<ItemData,ListItemAdapter.m
         this.context = context;
         this.list = data;
     }
-
-
-    /*@Override
-    public void onBindViewHolder(myViewHolder holder, final int position) {
-        ItemData data = list.get(position);
-        String mTitle;
-        if (data.receive){
-            mTitle = "[已签收]"+data.title;
-            SpannableStringBuilder builder = new SpannableStringBuilder(mTitle);
-            ForegroundColorSpan redSpan = new ForegroundColorSpan(Color.RED);
-            builder.setSpan(redSpan, 0, 5, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-            holder.tv_draft_title.setText(builder);
-        }else {
-            holder.tv_draft_title.setText(data.title);
-        }
-        if (data.author.equals("")){
-            holder.view_vertical_line.setVisibility(View.GONE);
-        }else {
-            holder.view_vertical_line.setVisibility(View.VISIBLE);
-            holder.tv_draft_author.setText(data.author);
-        }
-        holder.tv_release_time.setText(data.date);
-        if (data.lv == 1){
-            holder.tv_urgent.setVisibility(View.GONE);
-        }else if (data.lv == 2){
-            holder.tv_urgent.setVisibility(View.VISIBLE);
-        }
-        if (!data.lx.name.equals("")){
-            holder.tv_type.setText("["+data.lx.name+"]");
-        }
-        if (!data.district.equals("")){
-            holder.tv_area.setText("["+data.district+"]");
-        }
-        holder.tv_state.setText(data.status);
-    }*/
 
     @Override
     protected void convert(myViewHolder holder, ItemData item) {
@@ -110,7 +76,7 @@ public class ListItemAdapter extends BaseQuickAdapter<ItemData,ListItemAdapter.m
     }
 
 
-    class myViewHolder extends BaseViewHolder{
+    class myViewHolder extends BaseViewHolder {
         TextView tv_draft_title,tv_draft_author,tv_release_time,tv_urgent,tv_type,tv_area,tv_state;
         View view_vertical_line;
         LinearLayout item_click;

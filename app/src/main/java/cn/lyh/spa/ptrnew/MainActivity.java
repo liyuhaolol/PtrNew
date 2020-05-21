@@ -11,11 +11,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.listener.OnLoadMoreListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import cns.workspace.lib.androidsdk.httputils.listener.DisposeDataListener;
+import spa.lyh.cn.lib_https.listener.DisposeDataListener;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -23,7 +24,6 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView item_recy;
 
     ListItemAdapter adapter;
-    BaseQuickAdapter mm;
 
     FooterView footerView;
 
@@ -47,14 +47,14 @@ public class MainActivity extends AppCompatActivity {
         adapter = new ListItemAdapter(this,list);
         item_recy.setLayoutManager(new LinearLayoutManager(this));
         item_recy.setAdapter(adapter);
-        adapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
+        adapter.getLoadMoreModule().setOnLoadMoreListener(new OnLoadMoreListener() {
             @Override
-            public void onLoadMoreRequested() {
+            public void onLoadMore() {
                 loadMore();
             }
-        },item_recy);
-        adapter.setLoadMoreView(new MyLoadMoreView());
-        adapter.setEnableLoadMore(false);
+        });
+        adapter.getLoadMoreModule().setLoadMoreView(new MyLoadMoreView());
+        adapter.getLoadMoreModule().setEnableLoadMore(false);
 
     }
 
@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
                 ListData ld = (ListData) responseObj;
                 list.addAll(ld.list);
                 adapter.notifyDataSetChanged();
-                adapter.setEnableLoadMore(true);
+                adapter.getLoadMoreModule().setEnableLoadMore(true);
                 //adapter.setFooterView(footerView);
                 currentPage = lp.pageNo;
                 maxPage = ld.totalPage;
@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    adapter.loadMoreEnd();
+                    adapter.getLoadMoreModule().loadMoreEnd();
                 }
             },500);
         }else {
@@ -101,16 +101,16 @@ public class MainActivity extends AppCompatActivity {
                     ListData ld = (ListData) responseObj;
                     list.addAll(ld.list);
                     adapter.notifyDataSetChanged();
-                    adapter.setEnableLoadMore(true);
+                    adapter.getLoadMoreModule().setEnableLoadMore(true);
                     //adapter.setFooterView(footerView);
                     currentPage = lp.pageNo;
                     maxPage = ld.totalPage;
-                    adapter.loadMoreComplete();
+                    adapter.getLoadMoreModule().loadMoreComplete();
                 }
 
                 @Override
                 public void onFailure(Object reasonObj) {
-                    adapter.loadMoreFail();
+                    adapter.getLoadMoreModule().loadMoreFail();
                 }
             });
         }
